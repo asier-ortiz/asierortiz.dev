@@ -91,7 +91,7 @@ const EXCLUDED_HEADINGS_REGEX = /^(📋\s*)?table[-\s]*of[-\s]*contents$/i;
     </header>
 
     <div class="flex justify-start mt-6 mb-8">
-      <Button href="/blog/" variant="post-ghost" arrow="left" class="hover-button">
+      <Button href="/blog/" variant="post-ghost" arrow="left" class="hover-button" data-back-to-listing>
         Back to all posts
       </Button>
     </div>
@@ -109,7 +109,7 @@ const EXCLUDED_HEADINGS_REGEX = /^(📋\s*)?table[-\s]*of[-\s]*contents$/i;
     <ZoomImages client:load />
 
     <div class="flex justify-start mt-16">
-      <Button href="/blog/" variant="post-ghost" arrow="left" class="hover-button">
+      <Button href="/blog/" variant="post-ghost" arrow="left" class="hover-button" data-back-to-listing>
         Back to all posts
       </Button>
     </div>
@@ -141,4 +141,49 @@ const EXCLUDED_HEADINGS_REGEX = /^(📋\s*)?table[-\s]*of[-\s]*contents$/i;
       }
     }
   });
+</script>
+
+<script>
+  // "Back to all posts" takes the reader to the listing they came from, at the
+  // position they left it: it goes back in history and the browser restores the
+  // scroll from its own back-forward cache. Only when the previous entry is a
+  // listing page of this site; otherwise the button stays a plain link to /blog/.
+  const LISTING = /^\/blog\/?(page\/\d+\/?|tag\/[^/]+\/?)?$/;
+
+  function cameFromListing(): boolean {
+    try {
+      const from = new URL(document.referrer);
+      return from.origin === location.origin && LISTING.test(from.pathname);
+    } catch {
+      return false;
+    }
+  }
+
+  // Clicks on the table of contents add same-document history entries. Each entry
+  // of this article stores its index (0 on arrival) so the way back can skip them.
+  let index = typeof history.state?.postIndex === 'number' ? history.state.postIndex : 0;
+  if (history.state?.postIndex === undefined) {
+    history.replaceState({ ...history.state, postIndex: 0 }, '');
+  }
+  window.addEventListener('hashchange', () => {
+    if (typeof history.state?.postIndex === 'number') {
+      index = history.state.postIndex;
+      return;
+    }
+    index += 1;
+    history.replaceState({ postIndex: index }, '');
+  });
+
+  if (cameFromListing()) {
+    document.querySelectorAll<HTMLAnchorElement>('[data-back-to-listing]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const modified = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+        if (event.defaultPrevented || event.button !== 0 || modified) return;
+        // Opened in a new tab: the listing is not behind this page.
+        if (history.length < index + 2) return;
+        event.preventDefault();
+        history.go(-(index + 1));
+      });
+    });
+  }
 </script>

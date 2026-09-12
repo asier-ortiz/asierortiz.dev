@@ -11,7 +11,7 @@ draft: false
 
 Some apps are built for ideal conditions: fast Wi-Fi, stable connections, users sitting at desks. This is not one of those apps.
 
-This article covers the architecture and technical challenges behind a native Android application I built for **field operations teams** working on roads and highways. These teams patrol infrastructure, report incidents, manage emergencies, and log everything, often in areas with **zero cellular coverage**.
+This article covers the architecture and technical challenges behind a native Android application I built for the **field operations teams** of the Provincial Council of Álava, who work on roads and highways. These teams patrol infrastructure, report incidents, manage emergencies, and log everything, often in areas with **zero cellular coverage**.
 
 All I had to start with was a document briefly describing what the client needed: their field workers were filling out **paper forms** during road patrols, then manually entering the data into a web portal back at the office. They wanted to digitize and automate the entire process. That single document was my roadmap for the next several months.
 

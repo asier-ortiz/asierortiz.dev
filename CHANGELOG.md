@@ -1,3 +1,9 @@
+## [1.59.1](https://github.com/asier-ortiz/asierortiz.com/compare/v1.59.0...v1.59.1) (2026-09-12)
+
+### Bug Fixes
+
+* **blog:** render the search modal outside the view-transition-named filter row ([0897a41](https://github.com/asier-ortiz/asierortiz.com/commit/0897a4181be44d8b3b1a98632d463d1b1d57e743))
+
 ## [1.59.0](https://github.com/asier-ortiz/asierortiz.com/compare/v1.58.0...v1.59.0) (2026-09-12)
 
 ### Features

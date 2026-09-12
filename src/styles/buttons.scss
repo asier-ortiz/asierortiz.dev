@@ -6,7 +6,7 @@
 
 .button--primary {
   @apply relative border border-primary-500 bg-base-800;
-  @apply hover:bg-primary-500 hover:text-base-800;
+  @apply hover:bg-primary-500 hover:text-base-800 active:bg-primary-500 active:text-base-800;
   @apply focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 
   &::after {
@@ -18,19 +18,19 @@
 
 .button--secondary {
   @apply border border-base-500 bg-base-800;
-  @apply hover:border-primary-500;
+  @apply hover:border-primary-500 active:border-primary-500;
   @apply focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 }
 
 .button--outline {
   @apply border border-base-500 bg-transparent text-base-800;
-  @apply hover:border-primary-500 hover:text-primary-500;
+  @apply hover:border-primary-500 hover:text-primary-500 active:border-primary-500 active:text-primary-500;
   @apply focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 }
 
 .button--ghost {
   @apply bg-base-700 text-base-300;
-  @apply hover:bg-primary-500 hover:text-base-800;
+  @apply hover:bg-primary-500 hover:text-base-800 active:bg-primary-500 active:text-base-800;
   @apply focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 }
 
@@ -39,11 +39,11 @@
   @apply bg-transparent;
   @apply px-4 py-2;
   @apply border-2 border-transparent;
-  @apply hover:text-primary-300 hover:border-primary-600;
+  @apply hover:text-primary-300 hover:border-primary-600 active:text-primary-300 active:border-primary-600;
 }
 
 .button--link {
-  @apply text-primary-300 hover:text-primary-200 underline decoration-dashed underline-offset-4 decoration-1;
+  @apply text-primary-300 hover:text-primary-200 active:text-primary-200 underline decoration-dashed underline-offset-4 decoration-1;
   @apply font-medium bg-transparent border-none p-0 transition-colors duration-200;
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-base-900;
 }
@@ -54,7 +54,7 @@
 }
 
 .button--chip {
-  @apply px-3 py-1 text-xs rounded-full bg-base-800 text-primary-400 hover:bg-primary-500 hover:text-white;
+  @apply px-3 py-1 text-xs rounded-full bg-base-800 text-primary-400 hover:bg-primary-500 hover:text-white active:bg-primary-500 active:text-white;
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-0;
 }
 
@@ -91,8 +91,10 @@
   @screen xl {
     @apply bottom-20 right-10;
 
-    &:hover {
-      @apply transform scale-110 bg-primary-500 text-base-800 shadow-lg;
+    @media (hover: hover) {
+      &:hover {
+        @apply transform scale-110 bg-primary-500 text-base-800 shadow-lg;
+      }
     }
   }
 
@@ -100,8 +102,10 @@
   @media (prefers-reduced-motion: reduce) {
     @apply transition-none;
 
-    &:hover {
-      @apply scale-100;
+    @media (hover: hover) {
+      &:hover {
+        @apply scale-100;
+      }
     }
   }
 }

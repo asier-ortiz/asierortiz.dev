@@ -5,6 +5,9 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
+  // Wrap every hover: utility in @media (hover: hover): touch browsers otherwise
+  // apply :hover on tap and it sticks to the last thing the finger touched.
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     screens: {
       xs: '400px',

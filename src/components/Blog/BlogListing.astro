@@ -123,13 +123,13 @@ const searchIndex = allPosts.map((post) => ({
         return (
           <a
             href={`/blog/${post.slug}/`}
-            class="post-card group block overflow-hidden rounded-2xl border border-base-700 bg-base-900 hover:border-primary-500 hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300"
+            class="post-card group block overflow-hidden rounded-2xl border border-base-700 bg-base-900 hover:border-primary-500 hover:shadow-xl hover:scale-[1.02] active:border-primary-500 transform transition-all duration-300"
             data-tags={post.data.tags?.join(',')}
           >
             <PostImage src={post.data.image} alt={`Cover image for ${post.data.title}`} />
 
             <div class="p-6">
-              <h2 class="text-2xl font-semibold mb-2 group-hover:underline-ltr">{post.data.title}</h2>
+              <h2 class="text-2xl font-semibold mb-2 underline-ltr">{post.data.title}</h2>
 
               <div class="flex flex-wrap items-center gap-2 text-base-400 text-sm mb-4">
                 <time

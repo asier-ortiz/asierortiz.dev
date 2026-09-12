@@ -35,7 +35,12 @@ const sectionId = href.startsWith('/#') ? href.slice(2) : null;
     @apply bg-gradient-to-r from-primary-600 to-primary-600 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300;
   }
 
-  .navlink__underline-ltr:hover,
+  @media (hover: hover) {
+    .navlink__underline-ltr:hover {
+      @apply bg-[length:100%_2px];
+    }
+  }
+
   .active-navlink {
     @apply bg-[length:100%_2px];
   }

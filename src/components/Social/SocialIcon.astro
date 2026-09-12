@@ -16,7 +16,7 @@ const { social, href, text = '', class: className } = Astro.props as Props;
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class=`social-icon flex gap-2 p-1 hover:text-primary-600 transition-colors ${className}`
+  class=`social-icon flex gap-2 p-1 hover:text-primary-600 active:text-primary-600 transition-colors ${className}`
 >
   <p class="sr-only">{social}</p>
   {

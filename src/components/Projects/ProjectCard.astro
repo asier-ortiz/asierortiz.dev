@@ -99,10 +99,11 @@ const { images, title, description, href, languages, type, buttonText, buttonIco
     buttons.forEach((button) => {
       const gallery = button.closest('.project-container')?.querySelector('.project-gallery');
       if (button && gallery) {
-        button.addEventListener('mouseover', () => {
-          gallery.classList.add('zoom');
+        // Mouse only: a tap would synthesise the enter and never the leave.
+        button.addEventListener('pointerenter', (event) => {
+          if (event.pointerType === 'mouse') gallery.classList.add('zoom');
         });
-        button.addEventListener('mouseout', () => {
+        button.addEventListener('pointerleave', () => {
           gallery.classList.remove('zoom');
         });
       }

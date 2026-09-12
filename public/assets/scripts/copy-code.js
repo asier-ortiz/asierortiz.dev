@@ -18,7 +18,7 @@ function addCopyButtonsToCodeBlocks() {
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
     button.setAttribute('aria-label', 'Copy code to clipboard');
-    button.className = 'copy-code-button opacity-0 group-hover:opacity-100 transition-opacity';
+    button.className = 'copy-code-button';
     button.innerHTML = COPY_ICON;
     wrapper.appendChild(button);
 

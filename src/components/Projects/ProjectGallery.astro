@@ -126,8 +126,11 @@ const [first] = images;
       paused = false;
       start();
     };
-    gallery.addEventListener('mouseenter', pause);
-    gallery.addEventListener('mouseleave', resume);
+    // Mouse only: a tap would pause the rotation until the next tap elsewhere.
+    gallery.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'mouse') pause();
+    });
+    gallery.addEventListener('pointerleave', resume);
     gallery.addEventListener('focusin', pause);
     gallery.addEventListener('focusout', resume);
 

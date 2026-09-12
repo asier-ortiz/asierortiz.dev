@@ -69,7 +69,17 @@
   }
 
   .copy-code-button {
-    @apply absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400;
+    @apply absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-md transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400;
+
+    /* Revealed by hovering the block where hovering exists; always shown on touch. */
+    @media (hover: hover) {
+      opacity: 0;
+
+      .group:hover &,
+      &:focus-visible {
+        opacity: 1;
+      }
+    }
   }
 
   .copy-tooltip {
@@ -154,14 +164,17 @@
     transition: color 0.2s ease-in-out;
   }
 
-  a:hover mark {
-    background-color: rgba(255, 255, 255, 0.3);
-    color: inherit;
-  }
+  /* Hand-written hover rules are gated like the Tailwind ones (see tailwind.config.cjs). */
+  @media (hover: hover) {
+    a:hover mark {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: inherit;
+    }
 
-  a:hover p {
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.2s ease-in-out;
+    a:hover p {
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.2s ease-in-out;
+    }
   }
 
   .search-input:focus-within {
@@ -181,8 +194,10 @@
   @import 'aos';
   @import 'animations';
 
-  .group:hover .underline-ltr {
-    background-size: 100% 2px;
+  @media (hover: hover) {
+    .group:hover .underline-ltr {
+      background-size: 100% 2px;
+    }
   }
 
   .primary-focus {

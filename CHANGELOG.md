@@ -1,3 +1,15 @@
+## [1.60.0](https://github.com/asier-ortiz/asierortiz.com/compare/v1.59.1...v1.60.0) (2026-09-12)
+
+### Features
+
+* **blog:** reserve the box of every SVG figure before it loads ([3f294b3](https://github.com/asier-ortiz/asierortiz.com/commit/3f294b37410c77a28bf59b19e3a34e541041247e))
+* **blog:** return to the listing where the reader left it ([4fe883d](https://github.com/asier-ortiz/asierortiz.com/commit/4fe883de29f2f0f689ed71d71517310fa876a768))
+
+### Bug Fixes
+
+* **home:** render the background toggles on the server so anchors land right ([15fdf30](https://github.com/asier-ortiz/asierortiz.com/commit/15fdf300b54e13a7afb9a3ce463edc5d20db0e98))
+* **ui:** apply hover styles only where a pointer can hover ([8bca65d](https://github.com/asier-ortiz/asierortiz.com/commit/8bca65d0079d3adf0a30dc3fbf6321b5ed057635))
+
 ## [1.59.1](https://github.com/asier-ortiz/asierortiz.com/compare/v1.59.0...v1.59.1) (2026-09-12)
 
 ### Bug Fixes

@@ -7,6 +7,7 @@ import compress from 'astro-compress';
 import icon from 'astro-icon';
 import remarkExtractHeadings from './src/utils/remarkHeadings.ts';
 import rehypeTableWrap from './src/utils/rehypeTableWrap.ts';
+import rehypeImageSize from './src/utils/rehypeImageSize.ts';
 
 export default defineConfig({
   site: 'https://asierortiz.com',
@@ -29,7 +30,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkExtractHeadings],
-    rehypePlugins: [rehypeTableWrap],
+    rehypePlugins: [rehypeTableWrap, rehypeImageSize],
   },
   server: {
     port: 3_000,

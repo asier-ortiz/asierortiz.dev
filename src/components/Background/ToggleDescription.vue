@@ -15,9 +15,11 @@
       />
     </button>
 
+    <!-- v-show, not v-if: a closed v-if leaves an empty comment in the server HTML that the minifier
+         strips, and Vue then reports a hydration mismatch. This also keeps every description in the HTML. -->
     <transition name="accordion">
       <div
-        v-if="open"
+        v-show="open"
         :id="contentId"
         class="mt-2 description text-pretty overflow-hidden"
       >
@@ -36,11 +38,15 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  // Given by the parent so the server-rendered markup and the hydrated one agree.
+  contentId: {
+    type: String,
+    required: true,
+  },
 })
 
 const open = ref(props.initialOpen)
-
-const contentId = `description-${crypto.randomUUID()}`
+const contentId = props.contentId
 
 const toggle = () => {
   open.value = !open.value

@@ -18,7 +18,7 @@ import Academic from '@components/Icons/Academic.astro';
               { 'is-first': index === 0 },
               { 'is-last': index === backgroundData.length - 1 },
             ]}>
-              <BackgroundItem {...backgroundItem} initialOpen={index === 0} />
+              <BackgroundItem {...backgroundItem} index={index} initialOpen={index === 0} />
             </li>
           ))
         }

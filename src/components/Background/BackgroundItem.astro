@@ -1,6 +1,6 @@
 ---
 import ToggleDescription from '@components/Background/ToggleDescription.vue';
-const { title, center, description, date, initialOpen } = Astro.props;
+const { title, center, description, date, index, initialOpen } = Astro.props;
 ---
 
 <div class="timeline-item relative pb-12 pl-6 border-l-4 border-gray-700">
@@ -13,7 +13,10 @@ const { title, center, description, date, initialOpen } = Astro.props;
     <h3 class="text-xl font-bold text-primary-500">{title}</h3>
     <h4 class="font-semibold text-xl text-primary-100">{center}</h4>
     <time class="p-0 m-0 text-sm text-primary-50">{date}</time>
-    <ToggleDescription client:only="vue" initialOpen={initialOpen}>
+    {/* Server-rendered (client:load, not client:only): the open description and the toggles set the
+        height of everything above #projects, and a fragment scroll computed before they existed
+        would land short. */}
+    <ToggleDescription client:load contentId={`background-description-${index}`} initialOpen={initialOpen}>
       {description}
     </ToggleDescription>
   </div>

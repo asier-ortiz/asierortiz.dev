@@ -33,7 +33,6 @@ export interface SiteDataProps {
   name: string;
   title: string;
   description: string;
-  useViewTransitions?: boolean;
   useAnimations?: boolean;
   socialLinks: SocialLinkProps[];
   author: {
@@ -59,7 +58,6 @@ const siteData: SiteDataProps = {
   name: 'Asier Ortiz',
   title: 'Asier Ortiz - Full-Stack & Data Developer',
   description: 'Asier Ortiz portfolio & blog',
-  useViewTransitions: true,
   useAnimations: true,
 
   socialLinks: [

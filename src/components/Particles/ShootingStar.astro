@@ -108,7 +108,6 @@
 
     if (typeof window !== 'undefined') {
       document.addEventListener('DOMContentLoaded', scheduleNext);
-      document.addEventListener('astro:after-swap', scheduleNext);
       document.addEventListener('visibilitychange', onVisibilityChange);
     }
   })();
